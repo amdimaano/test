@@ -1,27 +1,41 @@
 package com.hackerrank.recursion;
 
-import java.util.LinkedHashSet;
-import java.util.Set;
+import static org.junit.Assert.assertEquals;
+
+import org.junit.Test;
 
 public class Combi {
 
-	public static void main(String[] args) {
-		combi(7, 4);
+	@Test
+	public void combiTest() {
+		int l = combi(7, 4);
+		assertEquals(35, l);
+
+		// int l = combi(10, 3, 0, "");
+		// assertEquals(120, l);
+
 	}
 
-	static long combi(int a, int b) {
-		Set<String> combinations = new LinkedHashSet<>();
+	private int combi(int n, int r) {
+		return combi(n, r, 1, "");
+	}
 
-		for (int i = 1; i <= a; i++) {
-			String s = String.valueOf(i);
-			for (int j = 1; j <= a; j++) {
-				for (int j2 = 1; j2 <= a; j2++) {
-					
-				}
-			}
+	private int combi(int n, int r, int fix, String c) {
+		// n choose r
+		int count = 0;
+		if (c.length() == r) {
+			System.out.println(c);
+			return 1;
 		}
 
-		System.out.println(combinations);
-		return 0L;
+		for (int i = 1; i <= n; i++) {
+			if (i == fix) {
+				continue;
+			}
+			count += combi(n, r, i, fix + c + i);
+		}
+
+		return count;
 	}
+
 }
