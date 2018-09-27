@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 
 public class MaskingTest {
@@ -135,10 +136,12 @@ public class MaskingTest {
 		for (String key : keys) {
 			Pattern pattern = Pattern.compile("\"" + key + "\": \"(\\d+|[^\\\"]*)\"");
 			Matcher matcher = pattern.matcher(jsonString);
-			if (matcher.find()) {
-				jsonString = jsonString.replace(matcher.group(1), "*******");
+			while (matcher.find()) {
+				String group = matcher.group(1);
+				jsonString = jsonString.replace(group, StringUtils.repeat('*', group.length()));
 			}
 		}
+
 		System.out.println(jsonString);
 	}
 }
