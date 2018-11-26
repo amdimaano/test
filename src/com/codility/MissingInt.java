@@ -7,7 +7,6 @@ import org.junit.Test;
 public class MissingInt {
 
 	public int getMissingInt(int[] arr) {
-		Integer.max
 		
 		int n = arr.length + 1;
 		int total = (n * (n + 1)) / 2;

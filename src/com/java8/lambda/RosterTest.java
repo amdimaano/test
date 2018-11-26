@@ -13,6 +13,10 @@ import org.junit.Test;
 import com.java8.lambda.Person.Sex;
 
 public class RosterTest {
+	
+	public static void main(String[] args) {
+		System.out.println("Hello world");
+	}
 
 	List<Person> roster;
 
